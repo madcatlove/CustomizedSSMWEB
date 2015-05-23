@@ -15,8 +15,8 @@ var judgeChpt1 = {
      */
     point : function ( extraInfo, data, callback) {
 
-        console.log( "Extra info : " , extraInfo );
-        console.log( " Data :: " , data);
+//        console.log( "Extra info : " , extraInfo );
+//        console.log( " Data :: " , data);
 
 
         var messages = [];

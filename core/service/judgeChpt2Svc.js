@@ -18,6 +18,9 @@ var judgeChpt2 = {
      */
     rect : function ( extraInfo, data, callback) {
 
+        console.log( "rect extrainfo : " , extraInfo );
+        console.log( "rect data : ", data);
+
         var messages = [];
 
         var sPoint = extraInfo.startpoint;

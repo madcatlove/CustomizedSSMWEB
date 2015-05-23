@@ -11,9 +11,16 @@ var freedrawController = require('../controller/freedrawCont');
 router.use( function(req, res, next) {
     var sess = req.session;
 
+    // 오픈이 안된 페이지.
+    throw u.error(u.ETYPE.UNDERCONSTRUCT.message, u.ETYPE.UNDERCONSTRUCT.errorCode, true);
+
+
     if( !sess.member || !sess.hasOwnProperty('member') ) {
         throw u.error(u.ETYPE.UNAUTH.message, u.ETYPE.UNAUTH.errorCode , true);
     }
+
+
+
 
     next();
 });

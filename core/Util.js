@@ -49,7 +49,8 @@ var utility = {
     ETYPE : {
         UNAUTH : genErrorCode(401, ' 접근 권한이 없습니다. '),
         FORBID : genErrorCode(403, ' 잘못된 접근입니다. '),
-        CRITICAL : genErrorCode(500, ' 내부 서버 오류 발생 ')
+        CRITICAL : genErrorCode(500, ' 내부 서버 오류 발생 '),
+        UNDERCONSTRUCT : genErrorCode(403, ' 준비중인 페이지 입니다 '),
     },
 
     /* HTML 특수 기호 치환 */

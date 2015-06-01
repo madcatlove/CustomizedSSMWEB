@@ -73,8 +73,8 @@ var judgeChpt2 = {
      */
     box : function( extraInfo, data, callback) {
 
-        console.log( " extra info high : " , extraInfo);
-        console.log( " data high : " , data);
+        //console.log( " extra info high : " , extraInfo);
+        //console.log( " data high : " , data);
 
         var messages = [];
 

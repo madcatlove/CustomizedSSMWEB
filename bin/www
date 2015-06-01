@@ -9,7 +9,7 @@ var debug = require('debug')('ssmweb:server');
 var http = require('http');
 
 var cluster = require('cluster'),
-    numCluster = 8; // 클러스터 갯수.
+    numCluster = 1; // 클러스터 갯수.
 
 /**
  * Get port from environment and store in Express.

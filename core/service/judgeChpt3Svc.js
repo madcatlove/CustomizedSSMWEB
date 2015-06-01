@@ -17,8 +17,8 @@ var judgeChpt3 = {
     translate : function (  extraInfo, data, callback) {
 
 
-        console.log( "extra info translate : " , extraInfo);
-        console.log( "data translate : ", data);
+        //console.log( "extra info translate : " , extraInfo);
+        //console.log( "data translate : ", data);
 
         var messages = [];
 

@@ -1,6 +1,7 @@
 /**
  * Redis Configuration
- * @property RedisConfig
+ *
+ * @module config
  * @type {Object}
  */
 module.exports = {

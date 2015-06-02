@@ -4,7 +4,8 @@
 
 /**
  * MySQL Database Config file.
- * @property mysqlConfig
+ *
+ * @module mysqlConfig
  * @type {Object}
  */
 module.exports = {

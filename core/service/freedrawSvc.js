@@ -8,12 +8,23 @@ var freedrawDA = require('../dataAccess/freedrawDA');
 var crypto = require('crypto');
 var async = require('async');
 
+/**
+ * Freedraw 기능 서비스
+ *
+ * @class FreedrawService
+ * @module Service
+ * @requires FreedrawDA
+ * @type {{slotDataByMember: Function, slotDataBySlotid: Function, updateSlotData: Function}}
+ */
 var service =  {
 
     /**
      * 해당 회원에 대한 FreeBlock Slot 를 모두 가져옴
+     *
+     * @method slotDataByMember
      * @param member
      * @param resultCallback
+     *
      */
     slotDataByMember : function(member, resultCallback) {
         u.assert( member, ' 잘못된 접근입니다. ', 403 );
@@ -37,8 +48,11 @@ var service =  {
 
     /**
      * 슬롯 id 로 데이터 요청
+     *
+     * @method slotDataBySlotid
      * @param sParam
      * @param resultCallback
+     * @async
      */
     slotDataBySlotid : function(sParam, resultCallback) {
         u.assert( sParam.member , u.ETYPE.UNAUTH.message, u.ETYPE.UNAUTH.errorCode);
@@ -60,8 +74,11 @@ var service =  {
 
     /**
      * 슬롯 데이터 업데이트 서비스
+     *
+     * @method updateSlotData
      * @param sParam
      * @param resultCallback
+     * @async
      */
     updateSlotData : function(sParam, resultCallback) {
         u.assert( sParam.member , u.ETYPE.UNAUTH.message, u.ETYPE.UNAUTH.errorCode);

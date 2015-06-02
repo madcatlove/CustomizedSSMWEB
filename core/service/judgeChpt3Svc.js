@@ -1,18 +1,25 @@
-/**
- * Created by jangjunho on 15. 1. 26..
- */
 
 var jMath = require('../Math');
 var jUtils = require('../jUtils');
 
+/**
+ * 챕터3 (3D+) 판정 알고리즘 서비스
+ *
+ * @class chap3JudegeService
+ * @module Service
+ * @type {{translate: Function, rotate: Function, scale: Function, pushPop: Function, perspective: Function, orthogonal: Function, positionLookat: Function, dirLight: Function, spotLight: Function}}
+ */
 var judgeChpt3 = {
 
     /**
      * 8) Translate
      * 1. 패러미터 비교
+     *
+     * @method translate
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     translate : function (  extraInfo, data, callback) {
 
@@ -66,9 +73,12 @@ var judgeChpt3 = {
     /**
      * 9) Rotate
      * 1. 패러미터 비교
+     *
+     * @method rotate
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     rotate : function (  extraInfo, data, callback) {
 
@@ -130,9 +140,12 @@ var judgeChpt3 = {
     /**
      * 10) Scale
      * 1. 패러미터 비교
+     *
+     * @method scale
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     scale : function (  extraInfo, data, callback) {
 
@@ -185,9 +198,12 @@ var judgeChpt3 = {
     /**
      * 11) Push, Pop
      * 1. 패러미터 비교
+     *
+     * @method pushPop
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     pushPop : function (  extraInfo, data, callback) {
 
@@ -244,9 +260,12 @@ var judgeChpt3 = {
     /**
      * 12) Perspective
      * 1. 입력 패러미터 비교
+     *
+     * @method perspective
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     perspective : function (  extraInfo, data, callback) {
 
@@ -295,9 +314,12 @@ var judgeChpt3 = {
     /**
      * 13) Orthogonal
      * 1. 입력 패러미터 비교
+     *
+     * @method orthogonal
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     orthogonal : function (  extraInfo, data, callback) {
 
@@ -349,9 +371,12 @@ var judgeChpt3 = {
     /**
      * 14) CamPos & LookAt
      * 1. 입력 패러미터 비교
+     *
+     * @method positionLookat
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     positionLookat : function (  extraInfo, data, callback) {
 
@@ -427,9 +452,12 @@ var judgeChpt3 = {
     /**
      * 15) Directional Light
      * 1. 입력 패러미터 비교
+     *
+     * @method dirLight
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
 
     dirLight : function (  extraInfo, data, callback) {
@@ -484,9 +512,12 @@ var judgeChpt3 = {
     /**
      * 16) Spot Light
      * 1. 입력 패러미터 비교
+     *
+     * @method spotLight
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     spotLight : function (  extraInfo, data, callback) {
 

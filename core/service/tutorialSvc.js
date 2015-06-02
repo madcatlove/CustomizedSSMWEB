@@ -6,12 +6,23 @@ var u = require('../Util'),
     async = require('async');
 var tutorialDA = require('../dataAccess/tutorialDA');
 
+
+/**
+ * 튜토리얼 관련 기능 서비스
+ *
+ * @class TutorialService
+ * @module Service
+ * @type {{getTutorialInfo: Function, getTutorialList: Function, markTutorialSuccess: Function, isValidStep: Function, getTutorialChapterList: Function, getTutorialProgressInfo: Function}}
+ */
 var service = {
 
     /**
      * 특정 TID(튜토리얼아이디) 의 튜토리얼 정보를 가져옴.
+     *
+     * @method getTutorialInfo
      * @param tid
      * @param resultCallback
+     * @async
      */
     getTutorialInfo : function(tid, resultCallback) {
         if(!tid) {
@@ -73,7 +84,10 @@ var service = {
 
     /**
      * 튜토리얼 리스트 정보를 모두 정렬하여 가져옴.
+     *
+     * @method getTutorialList
      * @param resultCallback
+     * @async
      */
     getTutorialList : function(resultCallback) {
         tutorialDA.getTutorialList(resultCallback);
@@ -81,9 +95,12 @@ var service = {
 
     /**
      * 특정회원 튜토리얼 성공 기록. ( insertID 를 리턴한다 )
+     *
+     * @method markTutorialSuccess
      * @param memberSession
      * @param tid
      * @param resultCallback
+     * @async
      */
     markTutorialSuccess : function(memberSession, tid, resultCallback) {
         u.assert( tid , u.ETYPE.FORBID.message + ' : 튜토리얼 아이디 누락 ', u.ETYPE.FORBID.errorCode);
@@ -102,8 +119,12 @@ var service = {
 
     /**
      * 현재 튜토리얼이 진행가능한 상태인지 확인. (true, false 리턴)
+     *
+     * @method isValidStep
      * @param tid
      * @param resultCallback
+     * @async
+     * @deprecated
      */
     isValidStep : function(tid, resultCallback) {
 
@@ -153,8 +174,10 @@ var service = {
 
     /**
      * 챕터별 튜토리얼 리스트 가져옴 (2D, 3D, 3D+)
+     *
+     * @method getTutorialChapterList
      * @param resultCallback
-     * @return { items }
+     * @async
      */
     getTutorialChapterList : function(resultCallback) {
 
@@ -177,8 +200,11 @@ var service = {
 
     /**
      * 튜토리얼 단계별 진행 여부 데이터 가공 서비스
+     *
+     * @method getTutorialProgressInfo
      * @param member
      * @param resultCallback
+     * @async
      */
     getTutorialProgressInfo : function(member, resultCallback) {
         u.assert( member, u.ETYPE.UNAUTH.message, u.ETYPE.UNAUTH.errorCode );

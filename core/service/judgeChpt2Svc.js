@@ -1,10 +1,16 @@
-/**
- * Created by jangjunho on 15. 1. 26..
- */
+
 
 var jMath = require('../Math');
 var jUtils = require('../jUtils');
 
+
+/**
+ * 챕터2 (3D)에 대한 판정 알고리즘 서비스
+ *
+ * @class chap2JudgeService
+ * @module Service
+ * @type {{rect: Function, box: Function, sphere: Function}}
+ */
 var judgeChpt2 = {
 
 
@@ -12,9 +18,12 @@ var judgeChpt2 = {
      * 5) 직육면체
      * 1. 각 면에 대한 노멀벡터를 구하여 반대 면에 대한 벡터의 합이 0인가
      * 2. 두 면만 확인
+     *
+     * @method rect
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     rect : function ( extraInfo, data, callback) {
 
@@ -67,9 +76,12 @@ var judgeChpt2 = {
     /**
      * 6) 직육면체 High
      * 1. 패러미터 비교
+     *
+     * @method box
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     box : function( extraInfo, data, callback) {
 
@@ -98,9 +110,12 @@ var judgeChpt2 = {
     /**
      * 7) 구 High
      * 1. 패러미터 비교
+     *
+     * @method sphere
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     sphere : function( extraInfo, data, callback) {
 

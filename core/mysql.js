@@ -1,11 +1,15 @@
-/**
- * Created by Lee on 2015-01-23.
- */
+
 
 var mysql = require('mysql');
 var mysqlConfig = require('../config/mysqlConfig');
 
-/* DB POOL 생성 */
+/**
+ * 데이터 베이스 접속 제공
+ *
+ * @class MySQLPOOL
+ * @module Connection
+ * @constructor
+ */
 var pool = mysql.createPool({
     connectionLimit : mysqlConfig.dbPoolSize,
     host : mysqlConfig.host,
@@ -18,6 +22,15 @@ var pool = mysql.createPool({
 });
 
 var db = {
+
+    /**
+     * MySQL Database POOL 에서 커넥션을 꺼내옴
+     *
+     * @method getConnection
+     * @throws {Error}
+     * @param resultCallback
+     * @async
+     */
     getConnection : function(resultCallback) {
         pool.getConnection( function( err, connection) {
             if( err ) {

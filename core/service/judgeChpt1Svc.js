@@ -4,14 +4,24 @@
 var jMath = require('../Math');
 var jUtils = require('../jUtils');
 
+/**
+ * 챕터1 에 대한 판정 알고리즘 제공 서비스
+ *
+ * @class chap1JudgeService
+ * @module Service
+ * @type {{point: Function, line: Function, triangle: Function, quadangle: Function}}
+ */
 var judgeChpt1 = {
 
     /**
      * 1) 점
      * 1. 점의 좌표가 일치하는가
+     *
+     * @method point
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     point : function ( extraInfo, data, callback) {
 
@@ -59,9 +69,12 @@ var judgeChpt1 = {
      * 1. BEGIN, END가 제대로 되어있는가
      * 2. 시작점이 일치하는가
      * 3. 점과 점 사이의 거리가 데이터베이스에서 설정된 값과 일치하는가
+     *
+     * @method line
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     line : function ( extraInfo, data, callback) {
 
@@ -108,9 +121,12 @@ var judgeChpt1 = {
      * 2. BEGIN, END가 두 쌍인가
      * 3. 시작점이 일치하는가
      * 4. 데이터베이스에 저장된 순서 데이터와 일치하는가
+     *
+     * @method triangle
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     triangle : function( extraInfo, data, callback) {
 
@@ -156,9 +172,12 @@ var judgeChpt1 = {
      * 1. BEGIN, END가 제대로 되어있는가
      * 2. 시작점이 일치하는가
      * 3. 데이터베이스에 저장된 순서 데이터와 일치하는가
+     *
+     * @method quadangle
      * @param extraInfo
      * @param data
      * @param callback
+     * @async
      */
     quadangle : function( extraInfo, data, callback) {
 

@@ -7,9 +7,23 @@ var memberDA = require('../dataAccess/memberDA'),
 var crypto = require('crypto');
 var async = require('async');
 
+/**
+ * 회원 정보 관리 기능 제공 서비스
+ *
+ * @class MemberService
+ * @module Service
+ * @type {{getMemberById: Function, insertMember: Function, procMemberLogin: Function, createMemberSession: Function, removeMemberSession: Function, assertMemberEqual: Function, clearTutorialGuide: Function}}
+ */
 var service = {
 
-    /* 아이디를 통해 해당 유저 정보 가져옴 */
+    /**
+     * 아이디를 통해 회원 정보 조회
+     *
+     * @method getMemberById
+     * @param userid
+     * @param resultCallback
+     * @async
+     */
     getMemberById : function( userid, resultCallback) {
         u.assert( userid, u.ETYPE.FORBID.message, u.ETYPE.FORBID.errorCode );
         u.assert( userid.length > 0, u.ETYPE.FORBID.message, u.ETYPE.FORBID.errorCode );
@@ -17,7 +31,14 @@ var service = {
         memberDA.getMemberById( userid, resultCallback);
     },
 
-    /* 멤버 추가 */
+    /**
+     * 회원 정보 추가 ( 멤버 객체 요구 )
+     *
+     * @method insertMember
+     * @param member
+     * @param resultCallback
+     * @async
+     */
     insertMember : function( member, resultCallback) {
         u.assert( member.userid || member.userpwd, u.ETYPE.FORBID.message, u.ETYPE.FORBID.errorCode  );
         u.assert( member.userid.length > 0 || member.userpwd.length > 0 , u.ETYPE.FORBID.message, u.ETYPE.FORBID.errorCode );
@@ -71,7 +92,14 @@ var service = {
 
     },
 
-    /* 멤버 로그인 서비스 */
+    /**
+     * 회원 (멤버) 로그인 서비스 제공
+     *
+     * @method procMemberLogin
+     * @param member
+     * @param resultCallback
+     * @async
+     */
     procMemberLogin : function( member, resultCallback) {
         u.assert( member.userid || member.userpwd, u.ETYPE.FORBID.message, u.ETYPE.FORBID.errorCode );
         u.assert( member.userid.length > 0 || member.userpwd.length > 0, u.ETYPE.FORBID.message, u.ETYPE.FORBID.errorCode );
@@ -92,7 +120,13 @@ var service = {
         })
     },
 
-    /* 세션에서 사용할 멤버 객체 가공 생성 */
+    /**
+     * 회원 세션 생성
+     *
+     * @method createMemberSession
+     * @param req
+     * @param member
+     */
     createMemberSession : function(req, member) {
         var sess = req.session;
         if( !sess) return;
@@ -104,7 +138,12 @@ var service = {
         };
     },
 
-    /* 세션 만료 */
+    /**
+     * 회원 세션 정보 소멸 서비스
+     *
+     * @method removeMemberSession
+     * @param req
+     */
     removeMemberSession : function(req) {
         var sess = req.session;
         if( !sess) return;
@@ -114,7 +153,15 @@ var service = {
         }
     },
 
-    /* 세션 멤버정보와 주어진 멤버 정보가 같은지 ? */
+    /**
+     * 회원이 일치하는지
+     *
+     * @method assertMemberEqual
+     * @deprecated
+     * @param req
+     * @param member
+     * @returns {boolean}
+     */
     assertMemberEqual : function(req, member) {
         var sess = req.session;
         if( !sess) return false;
@@ -125,7 +172,14 @@ var service = {
         return true;
     },
 
-    /* 튜토리얼 가이드 클리어 */
+    /**
+     * 튜토리얼 가이드 클리어 제공 서비스
+     *
+     * @method clearTutorialGuide
+     * @param member
+     * @param resultCallback
+     * @async
+     */
     clearTutorialGuide : function(member, resultCallback) {
         u.assert( member  , u.ETYPE.UNAUTH.message, u.ETYPE.UNAUTH.errorCode);
 

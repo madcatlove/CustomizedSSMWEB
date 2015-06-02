@@ -18,11 +18,22 @@ var judge = [
     [judgeChpt3.perspective, judgeChpt3.orthogonal, judgeChpt3.positionLookat, judgeChpt3.dirLight, judgeChpt3.spotLight]
 ];
 
+/**
+ * 통합 판정 알고리즘 제공 서비스
+ *
+ * @class inteJudegeService
+ * @module Service
+ * @type {{execJudge: Function}}
+ */
 var service = {
+
     /**
      * jid에 따른 튜토리얼 정보를 가져 온 후, 튜토리얼의 챕터 번호와 문제 번호를 인덱스로 하여 판정 함수를 호출한다.
+     *
+     * @method exexJudge
      * @param params
      * @param callback
+     * @async
      */
     execJudge : function(params, callback) {
 

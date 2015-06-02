@@ -1,7 +1,9 @@
 /**
- * Created by joom on 2015-01-28.
+ * Judege algorithm 을 위한 환경 설정 파일
+ *
+ * @config
+ * @type {{BEGIN: number, END: number, VERTEX2: number, VERTEX3: number, DRAWCIRCLE: number, DRAWBOX: number, DRAWSPHERE: number, PUSHMATRIX: number, POPMATRIX: number, TRANSLATE: number, ROTATE: number, SCALE: number, PERSPECTIVE: number, OTHOGRAPHIC: number, LOOKAT: number, DIRECTIONALLIGHT: number, SPOTLIGHT: number, CAMERAPOSITION: number, LIGHTPOSITION: number, IDENTITYMATRIX: number, LIGHTDIRECTION: number, MSG_LACK_BLOCKS: string, MSG_WRONG_BLOCK_TYPE: string, MSG_WRONG_BLOCK_PARAMS: string, MSG_WRONG_BLOCK_SEQ: string, MSG_CHK_START_POINT: string, isRightBlocks: Function}}
  */
-
 var blockType = {
 
     BEGIN:1,

@@ -7,11 +7,22 @@ var galleryDA = require('../dataAccess/galleryDA');
 var crypto = require('crypto');
 var async = require('async');
 
+/**
+ * 갤러리 기능 서비스
+ *
+ * @class GalleryService
+ * @module Service
+ * @requries GalleryDA
+ * @type {{saveGallery: Function, getGallery: Function}}
+ */
 var service = {
     /**
      * 갤러리 저장 서비스
+     *
+     * @method saveGallery
      * @param sParam
      * @param resultCallback
+     * @async
      */
     saveGallery : function( sParam, resultCallback) {
         var member = sParam.member;
@@ -64,6 +75,14 @@ var service = {
     },
 
 
+    /**
+     * 갤러리 리스트 가져옴
+     *
+     * @method getGallery
+     * @param sParam
+     * @param resultCallback
+     * @async
+     */
     getGallery : function(sParam, resultCallback) {
         galleryDA.getGalleryInfo(null, function(result){
             resultCallback(result);

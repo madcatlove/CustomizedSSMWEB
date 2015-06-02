@@ -1,18 +1,27 @@
-/**
- * Created by Lee on 2015-01-28.
- */
+
 var u = require('../Util');
 var boardDA = require('../dataAccess/boardDA');
 var crypto = require('crypto');
 var async = require('async');
 
 
+/**
+ * 게시판 기능 서비스
+ *
+ * @class BoardService
+ * @module Service
+ * @requires BoardDA
+ * @type {{getArticleList: Function, postArticle: Function, getParentArticleCount: Function, removeArticle: Function}}
+ */
 var service = {
 
     /**
      * 게시글 리스팅 서비스
+     *
+     * @method getArticleList
      * @param sParam
      * @param resultCallback
+     * @async
      */
         getArticleList : function( sParam, resultCallback) {
             u.assert( sParam.tid > 0 );
@@ -43,8 +52,11 @@ var service = {
 
     /**
      * 게시글 작성 서비스
+     *
+     * @method postArticle
      * @param article
      * @param resultCallback
+     * @async
      */
         postArticle : function( article, resultCallback) {
             u.assert(article.memberSeq);
@@ -66,8 +78,11 @@ var service = {
 
     /**
      * 부모글 갯수 조회 서비스
+     *
+     * @method getParentArticleCount
      * @param tid
      * @param resultCallback
+     * @async
      */
         getParentArticleCount : function( tid, resultCallback) {
             u.assert( tid );
@@ -79,9 +94,12 @@ var service = {
 
     /**
      * 게시글 삭제 서비스
+     *
+     * @method removeArticle
      * @param bid
      * @param member
      * @param resultCallback
+     * @async
      */
         removeArticle : function( bid, member, resultCallback) {
 

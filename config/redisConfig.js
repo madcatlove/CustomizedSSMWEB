@@ -1,5 +1,7 @@
 /**
  * Redis Configuration
+ * @property RedisConfig
+ * @type {Object}
  */
 module.exports = {
     host : 'localhost',

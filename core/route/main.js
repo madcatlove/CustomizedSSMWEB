@@ -5,7 +5,12 @@ var express = require('express'),
 var mainController = require('../controller/mainCont');
 
 
-/* Middleware */
+/**
+ * Main Routing file
+ *
+ * @class MainRouter
+ * @module Router
+ */
 router.use( function(req, res, next) {
    next();
 });

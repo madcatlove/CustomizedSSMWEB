@@ -1,6 +1,4 @@
-/**
- * Created by Lee on 2015-01-23.
- */
+
 
 var express = require('express'),
     router = express.Router(),
@@ -8,7 +6,12 @@ var express = require('express'),
 
 var memberController = require('../controller/memberCont');
 
-/* Middleware */
+/**
+ * 회원 기능 라우팅 파일
+ *
+ * @class MemberRouter
+ * @module Router
+ */
 router.use( function(req, res, next) {
     console.log( req.params );
     next();

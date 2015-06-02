@@ -1,6 +1,4 @@
-/**
- * Created by madcat on 1/21/15.
- */
+
 
 var rMain = require('./main'),
     rTutorial = require('./tutorial'),
@@ -13,6 +11,16 @@ var rMain = require('./main'),
 
 /**
  * 라우팅 정의 파일. ( 세세한 라우팅은 해당 파일이 가지고있다. )
+ *
+ * @class InitRouter
+ * @module Router
+ *
+ * @requires BoardRouter
+ * @requires FreedrawRouter
+ * @requires GalleryRouter
+ * @requires JudgeRouter
+ * @requires MemberRouter
+ * @requires TutorialRouter
  * @param app
  */
 var routeMapper = function(app) {

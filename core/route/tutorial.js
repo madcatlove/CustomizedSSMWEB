@@ -1,6 +1,4 @@
-/**
- * Created by Lee on 2015-01-23.
- */
+
 
 var express = require('express'),
     router = express.Router(),
@@ -9,7 +7,12 @@ var express = require('express'),
 
 var tutorialController = require('../controller/tutorialCont');
 
-/* Middleware */
+/**
+ * 튜토리얼 기능 라우팅
+ *
+ * @class TutorialRouter
+ * @module Router
+ */
 router.use( function(req, res, next) {
     var sess = req.session;
 

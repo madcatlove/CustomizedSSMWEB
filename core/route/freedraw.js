@@ -7,7 +7,12 @@ var u = require('../Util');
 var freedrawController = require('../controller/freedrawCont');
 
 
-/* Middleware */
+/**
+* Freedraw 라우팅 파일 ( 미들웨어 포함 )
+*
+* @class FreedrawRouter
+* @module Router
+*/
 router.use( function(req, res, next) {
     var sess = req.session;
 

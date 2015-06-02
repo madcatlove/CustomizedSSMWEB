@@ -6,7 +6,12 @@ var u = require('../Util');
 var galleryController = require('../controller/galleryCont');
 
 
-/* Middleware */
+/**
+* 갤러리 라우팅 파일 ( 미들웨어 포함 )
+*
+* @class GalleryRouter
+* @module Router
+*/
 router.use( function(req, res, next) {
     var sess = req.session;
 

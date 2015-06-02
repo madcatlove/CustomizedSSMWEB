@@ -1,7 +1,3 @@
-/**
- * 게시판 라우팅 파일
- * @type {*|exports}
- */
 
 var express = require('express'),
     router = express.Router(),
@@ -9,7 +5,12 @@ var express = require('express'),
 
 var boardController = require('../controller/boardCont');
 
-/* Middleware */
+/**
+ * 게시판 라우팅 파일
+ *
+ * @class BoardRouter
+ * @module Router
+ */
 router.use( function(req, res, next) {
     next();
 });

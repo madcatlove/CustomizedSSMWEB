@@ -5,7 +5,12 @@ var express = require('express'),
 
 var judgeController = require('../controller/judgeCont');
 
-/* Judge Middleware */
+/**
+ * 판정 알고리즘 라우터
+ *
+ * @class JudgeRouter
+ * @module Router
+ */
 router.use ( function(req, res, next) {
     var sess = req.session;
     if( !sess.member || !sess.hasOwnProperty('member') ) {

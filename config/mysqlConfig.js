@@ -5,7 +5,8 @@
 /**
  * MySQL Database Config file.
  *
- * @module mysqlConfig
+ * @class MySQLConfig
+ * @module config
  * @type {Object}
  */
 module.exports = {

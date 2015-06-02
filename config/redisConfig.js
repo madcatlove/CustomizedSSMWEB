@@ -1,6 +1,7 @@
 /**
  * Redis Configuration
  *
+ * @class RedisConfig
  * @module config
  * @type {Object}
  */

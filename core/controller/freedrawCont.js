@@ -6,10 +6,19 @@ var freedrawService = require('../service/freedrawSvc'),
 
 var async = require('async');
 
+/**
+ * FreeDraw controller
+ *
+ * @class FreedrawController
+ * @module Controller
+ * @type {{view: Function, viewBySlotid: Function, saveData: Function, getAllSlotInfo: Function, getSlotInfoBySlotid: Function}}
+ */
 var controller = {
 
     /**
      * Freedraw 뷰 렌더링 컨트롤러
+     *
+     * @method view
      * @param req
      * @param res
      */
@@ -62,6 +71,8 @@ var controller = {
 
     /**
      * Freedraw 뷰 렌더링 컨트롤러 (특정 슬롯)
+     *
+     * @method viewBySlotid
      * @param req
      * @param res
      */
@@ -126,6 +137,8 @@ var controller = {
 
     /**
      * Freedraw 데이터 저장 컨트롤러 ( 갤러리 이미지도 저장 )
+     *
+     * @method saveData
      * @param req
      * @param res
      */
@@ -178,6 +191,8 @@ var controller = {
 
     /**
      * 해당 회원 슬롯 모든 정보를 가져옴.
+     *
+     * @method getAllSlotInfo
      * @param req
      * @param res
      */
@@ -194,6 +209,8 @@ var controller = {
 
     /**
      * 해당 회원 특정 슬롯 번호 정보만 가져옴 ( 'slotid' range in 1~5 )
+     *
+     * @method getSlotInfoBySlotid
      * @param req
      * @param res
      */

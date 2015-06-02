@@ -1,17 +1,24 @@
-/**
- * 게시판 컨트롤러
- * @type {utility|exports}
- */
-
 var u = require('../Util');
 var boardService = require('../service/boardSvc'),
     tutorialService = require('../service/tutorialSvc');
 var async = require('async');
 
+
+/**
+ * Board Controller
+ *
+ * @class BoardController
+ * @module Controller
+ * @type {{getArticleListView: Function, getArticleList: Function, postArticle: Function, getBoardInfo: Function, removeArticle: Function, modifyArticle: Function}}
+ */
 var controller = {
 
     /**
      * 게시글 리스트 뷰 컨트롤러( Render )
+     *
+     * @method getArticleListView
+     * @param req
+     * @param res
      */
     getArticleListView : function(req, res) {
         var memberSession = req.session.member;
@@ -58,6 +65,8 @@ var controller = {
 
     /**
      * 게시글 가져오는 컨트롤러
+     *
+     * @method getArticleList
      * @param req
      * @param res
      */
@@ -81,6 +90,8 @@ var controller = {
 
     /**
      * 게시글 작성 컨트롤러
+     *
+     * @method postArticle
      * @param req
      * @param res
      */
@@ -133,6 +144,8 @@ var controller = {
 
     /**
      * 튜토리얼별 질문게시판 정보 가져오는 컨트롤러
+     *
+     * @method getBaordInfo
      * @param req
      * @param res
      */
@@ -174,6 +187,8 @@ var controller = {
 
     /**
      * 게시글 삭제 컨트롤러
+     *
+     * @method removeArticle
      * @param req
      * @param res
      */
@@ -192,6 +207,9 @@ var controller = {
 
     /**
      * 게시글 수정 컨트롤러
+     *
+     * @method modifyArticle
+     * @deprecated
      * @param req
      * @param res
      */

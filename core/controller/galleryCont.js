@@ -1,6 +1,3 @@
-/**
- * Created by Lee on 2015-02-07.
- */
 
 var u = require('../Util');
 var galleryService = require('../service/gallerySvc'),
@@ -8,7 +5,22 @@ var galleryService = require('../service/gallerySvc'),
 
 var async = require('async');
 
+/**
+ * Gallery controller 갤러리 컨트롤러
+ *
+ * @class GalleryController
+ * @module Controller
+ * @type {{view: Function, galleryList: Function}}
+ */
 var controller = {
+
+    /**
+     * 갤러리 뷰 메소드
+     *
+     * @method view
+     * @param req
+     * @param res
+     */
     view : function(req, res) {
         var page = req.query.page;
         if( !page ) page = 1;
@@ -42,6 +54,13 @@ var controller = {
 
     },
 
+    /**
+     * 갤러리 리스트 데이터 페이지 (JSON)
+     *
+     * @method galleryList
+     * @param req
+     * @param res
+     */
     galleryList : function(req, res) {
         var page = parseInt(req.query.page || 1);
 

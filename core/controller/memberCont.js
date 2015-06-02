@@ -1,16 +1,25 @@
-/**
- * Created by Lee on 2015-01-23.
- */
+
 var u = require('../Util');
 var memberService = require('../service/memberSvc'),
     tutorialService = require('../service/tutorialSvc');
 var async = require('async');
 
+
+/**
+ * 회원 관리 컨트롤러 ( 가입 / 로그인 / 뷰 / 세션 )
+ *
+ * @class MemberController
+ * @module Controller
+ * @type {{procJoin: Function, renderJoin: Function, procLogin: Function, procLogout: Function, clearTutorialGuide: Function}}
+ */
 var controller = {
 
     /**
-     * 회원가입 처리 컨트롤러
-     * Request param : s_userid, s_userpwd, s_userpwd2
+     * 회원가입 처리
+     *
+     * @method procJoin
+     * @param req
+     * @param res
      */
     procJoin : function(req, res) {
         var s_userid = u.trim(req.body.userid);
@@ -49,7 +58,9 @@ var controller = {
     },
 
     /**
-     * 회원가입 뷰 컨트롤러.
+     * 회원가입 뷰 .
+     *
+     * @method renderJoin
      * @param req
      * @param res
      */
@@ -86,7 +97,13 @@ var controller = {
 
     },
 
-    /* 회원로그인 처리 컨트롤러 */
+    /**
+     * 회원 로그인 함수
+     *
+     * @method procLogin
+     * @param req
+     * @param res
+     */
     procLogin : function(req, res) {
 
         console.log(req.body);
@@ -126,7 +143,13 @@ var controller = {
 
     },
 
-    /* 회원로그아웃 컨트롤러 */
+    /**
+     * 회원 로그아웃 처리 세션만료
+     *
+     * @method procLogout
+     * @param req
+     * @param res
+     */
     procLogout : function(req, res) {
         memberService.removeMemberSession(req);
         res.json( u.result(true, false) );

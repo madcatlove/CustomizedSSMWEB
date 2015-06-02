@@ -1,14 +1,26 @@
-/**
- * Created by Lee on 2015-01-23.
- */
+
+
 var u = require('../Util');
 var tutorialService = require('../service/tutorialSvc'),
     memberService = require('../service/memberSvc');
 var async = require('async');
 
+/**
+ * 튜토리얼 컨트롤러
+ *
+ * @class TutorialController
+ * @module Controller
+ * @type {{procTutorial: Function, procTutorialIntro: Function, getTutorialInfo: Function, getTutorialChapterProgressInfo: Function}}
+ */
 var controller = {
 
-    /* 튜토리얼 진행 컨트롤러 */
+    /**
+     * 튜토리얼 진행 뷰
+     *
+     * @method procTutorial
+     * @param req
+     * @param res
+     */
     procTutorial : function(req, res) {
         var sess = req.session;
 
@@ -110,7 +122,13 @@ var controller = {
 
     },
 
-    /* 처음 진행 튜토리얼 인트로 페이지 */
+    /**
+     * 튜토리얼 진행시 최초 접근시 인트로 페이지
+     *
+     * @method procTutorialIntro
+     * @param req
+     * @param res
+     */
     procTutorialIntro : function(req, res) {
         var sess = req.session;
         req.tid = 15;
@@ -194,7 +212,13 @@ var controller = {
         );
     },
 
-    /* 튜토리얼 정보를 가져오는 컨트롤러 */
+    /**
+     * 튜토리얼 서비스를 위한 기본 정보 컨트롤러 (JSON)
+     *
+     * @method getTutorialInfo
+     * @param req
+     * @param res
+     */
     getTutorialInfo : function(req, res) {
         var sess = req.session;
 
@@ -213,6 +237,8 @@ var controller = {
 
     /**
      * 챕터별 진행상황 가공 컨트롤러
+     *
+     * @method getTutorialChapterProgressInfo
      * @param req
      * @param res
      */

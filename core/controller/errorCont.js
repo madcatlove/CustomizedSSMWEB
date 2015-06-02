@@ -1,15 +1,21 @@
-/**
- * 에러처리 미들웨어 컨트롤러
- * @type {{errorHandler: Function}}
- */
+
 
 var u = require('../Util');
 var app = require('express')();
 
+/**
+ * 에러처리 미들웨어 컨트롤러
+ *
+ * @class ErrorController
+ * @module Controller
+ * @type {{errorHandler: Function}}
+ */
 var controller = {
 
     /**
      * 404 에러 처리를 위한 미들웨어
+     *
+     * @method pageNotFoundHandler
      * @param req
      * @param res
      * @param next
@@ -25,6 +31,8 @@ var controller = {
 
     /**
      * 모든 에러 처리를 위한 미들웨어
+     *
+     * @method errorHandler
      * @param err
      * @param req
      * @param res

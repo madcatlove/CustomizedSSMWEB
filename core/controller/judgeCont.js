@@ -1,14 +1,21 @@
-/**
- * Created by jangjunho on 15. 1. 26..
- */
 
 var u = require('../Util');
 var judgeService = require('../service/judgeSvc');
 
+
+/**
+ * Judge controller 그래픽스 판정 알고리즘 컨트롤러
+ *
+ * @class JudgeController
+ * @module Controller
+ * @type {{procJudge: Function}}
+ */
 var controller = {
 
     /**
      * 패러미터 객체를 만들고 판정 시작
+     *
+     * @method procJudge
      * @param req
      * @param res
      */

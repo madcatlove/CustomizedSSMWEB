@@ -1,16 +1,23 @@
-/**
- * Created by Lee on 2015-01-23.
- */
 
 var db = require('../mysql');
 var u  = require('../Util');
 
+/**
+ * 회원 관리 데이터 접근 모듈
+ *
+ * @class MemberDA
+ * @module DataAccess
+ * @type {{getMemberById: Function, insertMember: Function, clearTutorialGuide: Function}}
+ */
 var dataAccess = {
 
     /**
      * 아이디를 통한 멤버 정보 가져옴.
+     *
+     * @method getMemberById
      * @param userid
      * @param resultCallback
+     * @async
      */
     getMemberById : function( userid, resultCallback) {
 
@@ -30,8 +37,11 @@ var dataAccess = {
 
     /**
      * 멤버 추가 ( member 객체 받음 ( userid, userpwd 포함하고 있어야함 )
+     *
+     * @method insertMember
      * @param member
      * @param resultCallback
+     * @async
      */
     insertMember : function( member, resultCallback) {
         var queryStatement = 'INSERT INTO memberInfo (userid, userpwd, regdate) VALUES (?,?, NOW())';
@@ -48,7 +58,14 @@ var dataAccess = {
         })
     },
 
-    /* 튜토리얼 가이드 클리어 Y 변경 */
+    /**
+     * 튜토리얼 가이드 클리어 여부 Y 변환 ( 수행 완료 표시 )
+     *
+     * @method clearTutorialGuide
+     * @param member
+     * @param resultCallback
+     * @async
+     */
     clearTutorialGuide : function(member ,resultCallback) {
 
         var queryStatement = "UPDATE memberInfo SET guideClear = 'Y' WHERE seq = ?";

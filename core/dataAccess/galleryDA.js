@@ -8,13 +8,23 @@ var u  = require('../Util');
 var fs = require('fs');
 var path = require('path');
 
+/**
+ * 갤러리 데이터 접근 모듈
+ *
+ * @class GalleryDA
+ * @module DataAccess
+ * @type {{saveGalleryFile: Function, insertGallery: Function, getGalleryInfo: Function}}
+ */
 var dataAccess = {
 
     /**
      * 갤러리 파일 저장 DA ( /static/upload 에 저장된다 )
+     *
+     * @method saveGalleryFile
      * @param galleryData
      * @param filename
      * @param resultCallback
+     * @async
      */
     saveGalleryFile : function(galleryData, filename, resultCallback) {
         var savePath = path.join( __dirname, '../../', 'static/upload');
@@ -32,8 +42,11 @@ var dataAccess = {
 
     /**
      * 갤러리 정보 DB 에 기록 , 블락 정보도 같이 기록됨
+     *
+     * @method insertGallery
      * @param sParam
      * @param resultCallback
+     * @async
      */
     insertGallery : function(sParam, resultCallback) {
         var member = sParam.member;
@@ -56,6 +69,14 @@ var dataAccess = {
     },
 
 
+    /**
+     * 갤러리 정보를 가져옴. 회원정보 테이블과 조인
+     *
+     * @method getGalleryInfo
+     * @param sParam
+     * @param resultCallback
+     * @async
+     */
     getGalleryInfo : function(sParam, resultCallback) {
         var queryStatement = ' SELECT GI.seq, GI.fileInfo, GI.fileName, GI.regdate, GI.extraInfo, MI.userid FROM galleryInfo GI' +
                              ' LEFT OUTER JOIN memberInfo MI' +

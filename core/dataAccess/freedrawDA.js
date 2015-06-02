@@ -1,15 +1,23 @@
-/**
- * Created by Lee on 2015-02-06.
- */
+
 var db = require('../mysql');
 var u  = require('../Util');
 
+/**
+ * FreeDraw 데이터 접근 모듈
+ *
+ * @class FreedrawDA
+ * @module DataAccess
+ * @type {{getSlotInfoByMember: Function, getSlotInfoBySlotid: Function, updateSlotData: Function, initMemberSlot: Function}}
+ */
 var dataAccess = {
 
     /**
      * 해당 회원에 대한 FreeBlock Slot 를 모두 가져옴 ( slotSeq 로 오름차순 정렬 )
+     *
+     * @method getSlotInfoByMember
      * @param member
      * @param resultCallback
+     * @async
      */
     getSlotInfoByMember : function( member , resultCallback) {
 
@@ -31,8 +39,11 @@ var dataAccess = {
 
     /**
      * 해당 회원의 특정 슬롯번호의 데이터를 가져옴. ( sParam 은 member 와 slotid 를 무조건 담고있어야한다 )
+     *
+     * @method getSlotInfoBySlotid
      * @param sParam
      * @param resultCallback
+     * @async
      */
     getSlotInfoBySlotid : function( sParam, resultCallback) {
         var queryStatement = "SELECT *, CONVERT_TZ(regdate, '+00:00', '+09:00') `cregdate` FROM freeBlock WHERE memberSeq = ? AND slotSeq = ?";
@@ -56,8 +67,11 @@ var dataAccess = {
 
     /**
      * 슬롯 데이터 업데이트.
+     *
+     * @method updateSlotData
      * @param sParam
      * @param resultCallback
+     * @async
      */
     updateSlotData : function(sParam, resultCallback) {
         var member = sParam.member;
@@ -79,9 +93,12 @@ var dataAccess = {
 
     /**
      * 회원 슬롯 할당.
+     *
+     * @member initMemberSlot
      * @param member
      * @param slotid
      * @param resultCallback
+     * @async
      */
     initMemberSlot : function(memberSeq, slotid,  resultCallback) {
         var queryStatement  = ' INSERT IGNORE INTO freeBlock (memberSeq, data, regdate, slotSeq) VALUES ';

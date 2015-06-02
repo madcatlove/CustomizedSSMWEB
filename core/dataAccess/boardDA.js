@@ -15,9 +15,24 @@
 var db = require('../mysql');
 var u  = require('../Util');
 
+
+/**
+ * 게시판 데이터 접근 모듈
+ *
+ * @class BoardDA
+ * @module DataAccess
+ * @type {{postArticle: Function, updateParentSeq: Function, getArticleList: Function, getParentArticleCount: Function, getArticleBySeq: Function, removeArticleBySeq: Function, removeArticleParentAndChild: Function}}
+ */
 var dataAccess = {
 
-    /* 게시판 글작성 */
+    /**
+     * 게시글 저장 함수
+     *
+     * @method postArticle
+     * @param article
+     * @param resultCallback
+     * @async
+     */
     postArticle : function( article, resultCallback) {
 
         var queryStatement  = 'INSERT INTO qnaBoard (tutorialSeq, memberSeq, content, parentSeq, regdate ) VALUES ';
@@ -39,7 +54,14 @@ var dataAccess = {
 
     },
 
-    /* 댓글 부모번호 (주어진 articleId 로 업데이트함 ) 업데이트 */
+    /**
+     * 댓글 부모번호 (주어진 articleId 로 업데이트함 ) 업데이트
+     *
+     * @method updateParentSeq
+     * @param articleId
+     * @param resultCallback
+     * @async
+     */
     updateParentSeq : function( articleId, resultCallback) {
 
         var queryStatement = 'UPDATE qnaBoard SET parentSeq = ? WHERE seq = ?';
@@ -57,7 +79,14 @@ var dataAccess = {
 
     },
 
-    /* 게시판 글 리스트 가져오기 */
+    /**
+     *  게시판 글 리스트 가져오기
+     *
+     * @method getArticleList
+     * @param sParam
+     * @param resultCallback
+     * @async
+     */
     getArticleList : function( sParam, resultCallback) {
 
         var limitIdentifier = ''+ parseInt(sParam.startOffset) + ',' + parseInt(sParam.countOffset);
@@ -94,7 +123,14 @@ var dataAccess = {
     },
 
 
-    /* 부모글이 몇개인지 가져옴 */
+    /**
+     * 부모글이 몇개인지 가져옴
+     *
+     * @method getParentArticleCount
+     * @param tid
+     * @param resultCallback
+     * @async
+     */
     getParentArticleCount : function(tid, resultCallback) {
         var queryStatement = 'SELECT count(seq) AS `count` FROM qnaBoard WHERE tutorialSeq = ? AND seq = parentSeq';
 
@@ -116,8 +152,11 @@ var dataAccess = {
 
     /**
      * 시퀀스 번호를 통해 게시글을 가져옴.
+     *
+     * @method getArticleBySeq
      * @param bid
      * @param resultCallback
+     * @async
      */
     getArticleBySeq : function(bid, resultCallback) {
 
@@ -140,8 +179,11 @@ var dataAccess = {
 
     /**
      * 주어진 시퀀스 번호에 해당하는 게시글 삭제
+     *
+     * @method removeArticleBySeq
      * @param bid
      * @param resultCallback
+     * @async
      */
     removeArticleBySeq : function(bid, resultCallback) {
         var queryStatement = 'DELETE FROM qnaBoard WHERE seq = ?';
@@ -162,8 +204,11 @@ var dataAccess = {
 
     /**
      * 시퀀스 번호에 해당하는 부모글 , 그 부모글을 가지는 차일드 글 모두 삭제 ( 부모글 + 자식글 모두 삭제 )
+     *
+     * @method removeArticleParentAndChild
      * @param bid
      * @param resultCallback
+     * @async
      */
     removeArticleParentAndChild : function(bid, resultCallback) {
         var queryStatement = 'DELETE FROM qnaBoard WHERE seq = ? OR parentSeq = ?';

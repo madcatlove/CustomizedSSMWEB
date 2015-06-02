@@ -1,7 +1,4 @@
-/**
- * 튜토리얼 관련 DataAccess
- * @type {db|exports}
- */
+
 var db = require('../mysql');
 var u  = require('../Util');
 var fs = require('fs');
@@ -27,12 +24,22 @@ var async = require('async');
  */
 
 
+/**
+ * 튜토리얼 진행 데이터 접근 모듈
+ *
+ * @class TutorialDA
+ * @module DataAccess
+ * @type {{getTutorialInfo: Function, getTutorialList: Function, markTutorialSuccess: Function, getChapterCount: Function, getMemberChapterCount: Function, getTutorialResultCount: Function, getTutorialChapterList: Function, getTutorialContent: Function, getTutorialProgressInfo: Function}}
+ */
 var dataAccess = {
 
     /**
      * 특정 TID(튜토리얼아이디) 의 튜토리얼 정보를 가져옴.
+     *
+     * @method getTutorialInfo
      * @param tid
      * @param resultCallback
+     * @async
      */
     getTutorialInfo : function(tid, resultCallback) {
 
@@ -55,7 +62,10 @@ var dataAccess = {
 
     /**
      * 튜토리얼 리스트 정보를 모두 정렬하여 가져옴.
+     *
+     * @method getTutorialList
      * @param resultCallback
+     * @async
      */
     getTutorialList : function(resultCallback) {
         var queryStatement = 'SELECT * FROM tutorialInfo ORDER BY chapterSeq ASC, problemSeq ASC';
@@ -76,10 +86,13 @@ var dataAccess = {
 
     /**
      * 특정회원 튜토리얼 성공 기록. ( insertID 를 리턴한다 )
+     *
+     * @method markTutorialSuccess
      * @param member
      * @param tid
      * @param resultCallback
      * @callback last inserted id
+     * @async
      */
     markTutorialSuccess : function(member, tid, resultCallback) {
         var queryStatement  = 'INSERT INTO tutorialResult (tutorialSeq, memberSeq, regdate) VALUES (?,?,NOW())';
@@ -98,6 +111,14 @@ var dataAccess = {
         })
     },
 
+    /**
+     * 챕터 갯수를 가져옴
+     *
+     * @method getChapterCount
+     * @deprecated
+     * @param resultCallback
+     * @async
+     */
     getChapterCount : function(resultCallback) {
         var queryStatement = '';
         queryStatement += ' SELECT C.title AS `title`, count(*) `count`';
@@ -118,7 +139,15 @@ var dataAccess = {
         })
     },
 
-
+    /**
+     * 멤버별 챕터 갯수를 가져옴
+     *
+     * @method getMemberChapterCount
+     * @deprecated
+     * @param member
+     * @param resultCallback
+     * @async
+     */
     getMemberChapterCount : function(member, resultCallback) {
         var queryStatement = '';
 
@@ -145,8 +174,11 @@ var dataAccess = {
 
     /**
      * 주어진 튜토리얼 아이디(tid) 보다 작은 result 의 갯수를 가져옴.
+     *
+     * @method getTutorialResultCount
      * @param tid
      * @param resultCallback
+     * @async
      */
     getTutorialResultCount : function(tid, resultCallback) {
 
@@ -168,7 +200,10 @@ var dataAccess = {
 
     /**
      * 챕터별 튜토리얼 리스트 가져옴
+     *
+     * @method getTutorialChapterList
      * @param resultCallback
+     * @async
      */
     getTutorialChapterList : function(resultCallback) {
         var queryStatement  = ' SELECT TI.title, TI.seq, CI.title `chapter` FROM tutorialInfo TI, chapterInfo CI ';
@@ -190,9 +225,12 @@ var dataAccess = {
 
     /**
      * 튜토리얼 컨텐츠 가져옴( 가이드, 연습내용, 이미지정보 )
+     *
+     * @method getTutorialContent
      * @return { guide : ~~ , practice : ~~~ , image : ~~~ }
      * @param tid
      * @param resultCallback
+     * @async
      */
     getTutorialContent : function(tid, resultCallback) {
         var contentPath  = path.resolve( __dirname , '../../static/content');
@@ -284,8 +322,11 @@ var dataAccess = {
 
     /**
      * 튜토리얼별 진행상황 여부 가져옴.
+     *
+     * @method getTutorialProgressInfo
      * @param member
      * @param resultCallback
+     * @async
      */
     getTutorialProgressInfo : function(member, resultCallback) {
 

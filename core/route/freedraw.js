@@ -17,9 +17,9 @@ router.use( function(req, res, next) {
     var sess = req.session;
 
 
-    //if( !sess.member || !sess.hasOwnProperty('member') ) {
-    //    throw u.error(u.ETYPE.UNAUTH.message, u.ETYPE.UNAUTH.errorCode , true);
-    //}
+    if( !sess.member || !sess.hasOwnProperty('member') ) {
+        throw u.error(u.ETYPE.UNAUTH.message, u.ETYPE.UNAUTH.errorCode , true);
+    }
 
 
 
